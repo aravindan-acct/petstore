@@ -123,6 +123,9 @@ def get_user_by_name(username):  # noqa: E501
         result_dict.update({"is_active": userObject.is_active})
         result_dict.update({"is_authenticated": userObject.is_authenticated})
         result_dict.update({"get_id": userObject.get_id()})
+        result_dict.update({"firstName": userObject.firstName})
+        result_dict.update({"lastName": userObject.lastName})
+        result_dict.update({"phone": userObject.phone})
         
         return result_dict, 200
     else:
