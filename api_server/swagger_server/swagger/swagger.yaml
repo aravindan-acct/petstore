@@ -586,9 +586,11 @@ components:
         petId:
           type: integer
           format: int64
-        quantity:
+        transactionDetailsId:
           type: integer
-          format: int32
+          format: int64
+        username:
+          type: string
         shipDate:
           type: string
           format: date-time
