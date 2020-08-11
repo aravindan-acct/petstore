@@ -9,10 +9,17 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 import __main__  
+import os
 
 
 def db_conn():
-    engine = db.create_engine('mysql+mysqlconnector://pyuser:petstore@127.0.0.1:3306/awsdevdays', echo=True)
+    try:
+        dbuser = os.environ['DBUSER']
+        dbpassword = os.environ['DBPASSWORD']
+        dbstring = 'mysql+mysqlconnector://'+dbuser+":"+dbpassword+'@127.0.0.1:3306/awsdevdays'
+        engine = db.create_engine(dbstring, echo=True)
+    except:
+        engine = db.create_engine('mysql+mysqlconnector://pyuser:petstore@127.0.0.1:3306/awsdevdays', echo=True)
     Base = declarative_base()
     return engine, Base
 
