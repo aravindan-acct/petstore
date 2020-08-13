@@ -115,7 +115,7 @@ def get_user_by_name(username):  # noqa: E501
     session = Session()
     print(username)
     userObject = session.query(Users).filter(Users.username == username).first()
-    print(dir(userObject))
+    print(userObject)
     print(userObject.get_id())
     result_dict = dict()
     if userObject:
@@ -129,6 +129,7 @@ def get_user_by_name(username):  # noqa: E501
         
         return result_dict, 200
     else:
+        
         return 'User does not exist', 404 
 
 
@@ -155,6 +156,7 @@ def login_user(username, password):  # noqa: E501
     if  i:
         #check password
         if check_password_hash(i.password, password):
+            
             return "password matches successfully", 200
         else:
             return "password does not match", 404

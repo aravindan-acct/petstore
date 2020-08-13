@@ -76,7 +76,7 @@ class Users(Base, UserMixin):
     firstName = Column(String(50))
     lastName = Column(String(50))
     email = Column(String(50), unique=True)
-    password = Column(String(50))
+    password = Column(String(100))
     phone = Column(Integer)
 
     #Order_Map = relationship("Order_Map", back_populates = 'user', cascade="all, delete, delete-orphan")
