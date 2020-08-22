@@ -134,7 +134,7 @@ def find_pets_by_status(status):  # noqa: E501
         session = Session()
         for id in session.query(Pets.id).filter(Pets.status == v):
             print(id[0])    
-            result = session.query(Pets.name, Tags.tag1, Tags.tag2, Photos.photo1, Photos.photo2).join(Tags).join(Photos).filter(Tags.pet_id == id[0]).all()
+            result = session.query(Pets.name, Tags.tag1, Tags.tag2, Photos.photo1, Photos.photo2, Pets.status).join(Tags).join(Photos).filter(Tags.pet_id == id[0]).all()
             pet_key = "pet_key"+str(id[0])
             result_dict.update({pet_key: result})
     

@@ -56,8 +56,15 @@ def get_inventory():  # noqa: E501
                               "photo1": inventory[i].photo1,
                               "photo2": inventory[i].photo2}
         })
-    print(data_dict)
-    return data_dict
+    final_payload = {}
+    for k,v in data_dict.items():
+        if v["status"] == "available":
+            final_payload.update ({
+                k: v
+            })
+            
+    print(final_payload)
+    return final_payload
 
 
 def get_order_by_id(order_id):  # noqa: E501
