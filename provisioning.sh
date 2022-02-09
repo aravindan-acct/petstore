@@ -3,6 +3,7 @@
 touch /home/testfile.txt
 #exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 sudo apt-get -y update
+sudo apt install net-tools
 sudo  apt-get -y install php php-mysql mariadb-server git python3 python3-pip
 sudo systemctl enable mariadb
 sudo systemctl start  mariadb
