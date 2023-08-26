@@ -769,8 +769,18 @@ components:
       required: true
   securitySchemes:
     petstore_auth:
-      type: http
-      scheme: basic
-security:
-  - basicAuth: []
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://petstore.swagger.io/oauth/dialog
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+      x-tokenInfoFunc: swagger_server.controllers.authorization_controller.check_petstore_auth
+      x-scopeValidateFunc: swagger_server.controllers.authorization_controller.validate_scope_petstore_auth
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+      x-apikeyInfoFunc: swagger_server.controllers.authorization_controller.check_api_key
 
