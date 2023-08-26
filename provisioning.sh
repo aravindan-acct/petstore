@@ -12,8 +12,8 @@ sudo mysql -u root --password=TiUtpgDKlbVJpXpaADrTiSfhkphDznym -e "quit"
 sudo mysql -u root --password=TiUtpgDKlbVJpXpaADrTiSfhkphDznym  -e  "CREATE DATABASE awsdevdays; CREATE USER  'wafdemodbuser'@'localhost' IDENTIFIED BY 'h6d7GEujNYW06idiNG1qaeuemqZWzZyO';  GRANT ALL ON awsdevdays.* TO  wafdemodbuser@localhost; FLUSH PRIVILEGES;"
 export DBUSER=wafdemodbuser
 export DBPASSWORD=h6d7GEujNYW06idiNG1qaeuemqZWzZyO
-dir=$(pwd)
-pip3 install --user -r requirements.txt
+git clone https://github.com/aravindan-acct/petstore.git
+cd petstore && pip3 install --user -r requirements.txt
 pip3 install --user connexion[swagger-ui]
-cd $dir/api_server
+cd api_server/
 nohup python3 -m swagger_server &
